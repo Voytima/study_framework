@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Школа программирования
+{% endblock title %}
+
+{% block menu %}
+    {% include 'inc-menu.html' %}
+{% endblock menu %}
+
+{% block body %}
+	<p><img src="staticfiles/images/logo.jpg" alt="Some picture" width="200" height="200"></p>
+    <div>
+        <a href="/create-category/">Создать новую категорию</a>
+		<br>
+        <a href="/category-list/">Список категорий</a>
+    </div>
+    <div>
+        <h1>Список существующих категорий</h1>
+        {% for item in objects_list %}
+            <li>
+                {{item.name}} <span>Количество курсов: {{item.course_count()}}</span>
+                <a href="/courses-list/?id={{item.id}}">Показать курсы</a>
+            </li>
+        {% endfor %}
+ 		<br>
+		<hr>
+	</div>
+	<div>
+		<li>
+			<a href="/student-list/">Список студентов</a>
+		</li>
+		<li>
+			<a href="/create-student/">Создать студента</a>
+		</li>
+		<li>
+			<a href="/add-student/">Добавить студента на курс</a>
+		</li>
+	</div>
+{% endblock %}
